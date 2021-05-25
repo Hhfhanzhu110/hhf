@@ -14,6 +14,17 @@ public class Student {
     //年级
     private String classes;
 
+    //地址
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getName() {
         return name;
     }
