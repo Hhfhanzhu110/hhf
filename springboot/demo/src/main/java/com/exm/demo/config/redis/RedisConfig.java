@@ -1,4 +1,4 @@
-package com.exm.demo.config;
+package com.exm.demo.config.redis;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
