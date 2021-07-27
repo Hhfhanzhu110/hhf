@@ -8,12 +8,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class SystemUserController {
@@ -40,7 +39,9 @@ public class SystemUserController {
             return AxiosResult.error("用户名或密码错误");
         }else{
             UserContext.putCurrebtUser(systemUser);
+            Map<String, String> map = new HashMap<>();
+            map.put("tokenStr",systemUser.getUserId().toString());
+            return AxiosResult.success("登录成功",map);
         }
-        return AxiosResult.success();
     }
 }

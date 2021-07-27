@@ -70,7 +70,7 @@ public class AxiosResult extends HashMap<String, Object> {
     public static AxiosResult success(String msg, Object object) {
         AxiosResult json = new AxiosResult();
         json.put("message", msg);
-        json.put("object", object);
+        json.put("data", object);
         json.put("code", 0);
         return json;
     }

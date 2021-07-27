@@ -6,7 +6,7 @@
     <select id="login" resultType="com.exm.demo.yeb.sysuser.domain.SystemUser">
         SELECT *
         FROM system_user
-        WHERE user_name = #{username}
+        WHERE login_name = #{username}
           and password = #{password}
     </select>
 </mapper>

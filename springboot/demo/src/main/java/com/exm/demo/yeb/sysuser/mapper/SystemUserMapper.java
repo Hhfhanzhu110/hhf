@@ -10,10 +10,10 @@ public interface SystemUserMapper {
     /**
      * 用户登录
      * @param username 用户名
-     * @param encode 密码
+     * @param password 密码
      * @return
      */
-    public SystemUser login(@Param("username") String username, @Param("password") String encode);
+    public SystemUser login(@Param("username") String username, @Param("password") String password);
 
 
 }
