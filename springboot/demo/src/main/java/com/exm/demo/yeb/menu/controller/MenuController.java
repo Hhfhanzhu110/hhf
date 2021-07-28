@@ -26,7 +26,7 @@ public class MenuController {
         if (curreentUser != null){
             List<Menu> menus = menuService.searchMenusByUser(curreentUser,1L);
             if (menus!=null){
-                return AxiosResult.success("ok",menus);
+                return AxiosResult.success(menus);
             } else {
                 return AxiosResult.error();
             }

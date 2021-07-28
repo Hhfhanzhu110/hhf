@@ -46,6 +46,11 @@ public class Menu extends BaseEntity {
     private String url;
 
     /**
+     * 菜单path
+     */
+    private String path;
+
+    /**
      * 类型:0目录,1菜单,2按钮
      */
     private String menuType;
@@ -64,6 +69,11 @@ public class Menu extends BaseEntity {
      * 菜单图标
      */
     private String icon;
+
+    /**
+     * 菜单组件
+     */
+    private String component;
 
     /**
      * 子菜单

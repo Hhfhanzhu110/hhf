@@ -60,6 +60,7 @@ public class AxiosResult extends HashMap<String, Object> {
         return json;
     }
 
+
     /**
      * 返回成功消息
      *
@@ -75,6 +76,18 @@ public class AxiosResult extends HashMap<String, Object> {
         return json;
     }
 
+    /**
+     * 返回成功消息
+     *
+     * @param object 实体
+     * @return 成功消息
+     */
+    public static AxiosResult success(Object object) {
+        AxiosResult json = new AxiosResult();
+        json.put("data", object);
+        json.put("code", 0);
+        return json;
+    }
     /**
      * 返回成功消息
      *
