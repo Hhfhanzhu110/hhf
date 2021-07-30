@@ -4,7 +4,7 @@ import com.exm.demo.utils.TreeUtil;
 import com.exm.demo.yeb.menu.domain.Menu;
 import com.exm.demo.yeb.menu.mapper.MenuMapper;
 import com.exm.demo.yeb.menu.service.MenuService;
-import com.exm.demo.yeb.sysuser.domain.SystemUser;
+import com.exm.demo.yeb.user.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class MenuServiceImpl implements MenuService {
     MenuMapper menuMapper;
 
     @Override
-    public List<Menu> searchMenusByUser(SystemUser user,Long parentId) {
+    public List<Menu> searchMenusByUser(User user, Long parentId) {
         List<Menu> menus = new ArrayList<>();
         if (user != null){
             menus = menuMapper.searchMenusByUser(user);

@@ -1,6 +1,6 @@
-package com.exm.demo.yeb.sysuser.mapper;
+package com.exm.demo.yeb.user.mapper;
 
-import com.exm.demo.yeb.sysuser.domain.SystemUser;
+import com.exm.demo.yeb.user.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -13,7 +13,7 @@ public interface SystemUserMapper {
      * @param password 密码
      * @return
      */
-    public SystemUser login(@Param("username") String username, @Param("password") String password);
+    public User login(@Param("username") String username, @Param("password") String password);
 
 
 }

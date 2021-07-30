@@ -1,4 +1,4 @@
-package com.exm.demo.yeb.sysuser.domain;
+package com.exm.demo.yeb.user.domain;
 
 import com.exm.demo.entity.BaseEntity;
 import com.exm.demo.yeb.Role.domain.Role;
@@ -8,7 +8,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class SystemUser extends BaseEntity {
+public class User extends BaseEntity {
     /**
      * 用户ID
      */

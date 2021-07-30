@@ -1,7 +1,7 @@
 package com.exm.demo.yeb.menu.mapper;
 
 import com.exm.demo.yeb.menu.domain.Menu;
-import com.exm.demo.yeb.sysuser.domain.SystemUser;
+import com.exm.demo.yeb.user.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,5 +14,5 @@ public interface MenuMapper {
      *  @param user 用户
      *  @return
      */
-    public List<Menu> searchMenusByUser(SystemUser user);
+    public List<Menu> searchMenusByUser(User user);
 }

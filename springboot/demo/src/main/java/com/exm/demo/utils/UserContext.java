@@ -1,6 +1,6 @@
 package com.exm.demo.utils;
 
-import com.exm.demo.yeb.sysuser.domain.SystemUser;
+import com.exm.demo.yeb.user.domain.User;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -22,14 +22,14 @@ public class UserContext {
     /**
      * 设置当前用户到session中
      */
-    public static void putCurrebtUser(SystemUser currentUser) {
+    public static void putCurrebtUser(User currentUser) {
         getSession().setAttribute(CURRENT_USER_IN_SESSION,currentUser);
     }
     /**
      * 获取当前用户
      */
-    public static SystemUser getCurreentUser() {
-        return (SystemUser) getSession().getAttribute(CURRENT_USER_IN_SESSION);
+    public static User getCurreentUser() {
+        return (User) getSession().getAttribute(CURRENT_USER_IN_SESSION);
     }
 }
 

@@ -1,8 +1,8 @@
-package com.exm.demo.yeb.sysuser.service.impl;
+package com.exm.demo.yeb.user.service.impl;
 
-import com.exm.demo.yeb.sysuser.mapper.SystemUserMapper;
-import com.exm.demo.yeb.sysuser.domain.SystemUser;
-import com.exm.demo.yeb.sysuser.service.SystemUserService;
+import com.exm.demo.yeb.user.mapper.SystemUserMapper;
+import com.exm.demo.yeb.user.domain.User;
+import com.exm.demo.yeb.user.service.SystemUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ public class SystemUserServiceImpl implements SystemUserService {
     SystemUserMapper systemUserMapper;
 
     @Override
-    public SystemUser login(String username, String password) {
+    public User login(String username, String password) {
         return systemUserMapper.login(username,password);
     }
 }
