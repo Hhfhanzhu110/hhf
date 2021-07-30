@@ -45,9 +45,9 @@ public class PositionController {
         }
     }
 
-    @RequestMapping(value = {"/position/put"},method = {RequestMethod.PUT},produces = {"application/json"})
+    @RequestMapping(value = {"/position/put"})
     @ResponseBody
-    public AxiosResult putPosition(@RequestBody Position position){
+    public AxiosResult putPosition(Position position){
         try {
             int n = positionService.putPosition(position);
             return AxiosResult.success();

@@ -18,6 +18,6 @@ public interface PositionMapper {
     @Delete("delete from tb_position where id = #{id}")
     public int deletePosition(String id);
 
-    @Update("update tb_position set name = #{name},update_time=#{updateTime}")
+    @Update("update tb_position set name = #{name},update_time=#{updateTime} where id = #{id}")
     public int putPosition(Position position);
 }

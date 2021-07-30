@@ -24,10 +24,8 @@ public class PositionServiceImpl implements PositionService {
 
     @Override
     public String addPosition(Position position) {
-        position.setCreateBy(UserContext.getCurreentUser().getLoginName());
-        position.setUpdateBy(UserContext.getCurreentUser().getLoginName());
-        position.setCreateTime(new Date());
         position.setUpdateTime(new Date());
+        position.setCreateTime(new Date());
         int n = positionMapper.addPosition(position);
         if (n==1){
             return "ok";
@@ -43,6 +41,8 @@ public class PositionServiceImpl implements PositionService {
 
     @Override
     public int putPosition(Position position) {
+        position.setUpdateTime(new Date());
+        position.setUpdateBy(UserContext.getCurreentUser().getLoginName());
         return positionMapper.putPosition(position);
     }
 }
