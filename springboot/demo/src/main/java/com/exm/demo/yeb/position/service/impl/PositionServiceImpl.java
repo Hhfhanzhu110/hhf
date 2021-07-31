@@ -45,4 +45,9 @@ public class PositionServiceImpl implements PositionService {
         position.setUpdateBy(UserContext.getCurreentUser().getLoginName());
         return positionMapper.putPosition(position);
     }
+
+    @Override
+    public int deletePositionsByIds(String[] ids) {
+        return positionMapper.deletePositionsByIds(ids);
+    }
 }

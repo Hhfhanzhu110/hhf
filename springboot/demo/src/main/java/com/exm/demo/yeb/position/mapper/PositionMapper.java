@@ -20,4 +20,7 @@ public interface PositionMapper {
 
     @Update("update tb_position set name = #{name},update_time=#{updateTime} where id = #{id}")
     public int putPosition(Position position);
+
+    @Delete("delete from tb_position where id in (#{ids})")
+    int deletePositionsByIds(String[] ids);
 }

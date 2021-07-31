@@ -12,4 +12,6 @@ public interface PositionService {
     int deletePosition(String id);
 
     int putPosition(Position position);
+
+    int deletePositionsByIds(String[] ids);
 }

@@ -56,4 +56,15 @@ public class PositionController {
         }
     }
 
+    @RequestMapping(value = {"/position/delete/{ids}"})
+    @ResponseBody
+    public AxiosResult deletePositions(@PathVariable("ids") String[] ids){
+        try {
+            int n = positionService.deletePositionsByIds(ids);
+            return AxiosResult.success();
+        } catch (Exception e){
+            return AxiosResult.error();
+        }
+    }
+
 }
