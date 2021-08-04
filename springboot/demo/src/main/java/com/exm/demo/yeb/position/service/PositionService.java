@@ -9,9 +9,7 @@ public interface PositionService {
 
     String addPosition(Position position);
 
-    int deletePosition(String id);
-
     int putPosition(Position position);
 
-    int deletePositionsByIds(String[] ids);
+    int deletePositionsByIds(List<Integer> ids);
 }

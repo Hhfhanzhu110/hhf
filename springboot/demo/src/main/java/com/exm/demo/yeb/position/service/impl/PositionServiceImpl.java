@@ -35,11 +35,6 @@ public class PositionServiceImpl implements PositionService {
     }
 
     @Override
-    public int deletePosition(String id) {
-        return positionMapper.deletePosition(id);
-    }
-
-    @Override
     public int putPosition(Position position) {
         position.setUpdateTime(new Date());
         position.setUpdateBy(UserContext.getCurreentUser().getLoginName());
@@ -47,7 +42,7 @@ public class PositionServiceImpl implements PositionService {
     }
 
     @Override
-    public int deletePositionsByIds(String[] ids) {
+    public int deletePositionsByIds(List<Integer> ids) {
         return positionMapper.deletePositionsByIds(ids);
     }
 }

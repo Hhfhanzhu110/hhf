@@ -15,12 +15,8 @@ public interface PositionMapper {
             "values (#{name},#{createBy},#{createTime,jdbcType=TIMESTAMP},#{updateBy},#{updateTime,jdbcType=TIMESTAMP})")
     public int addPosition(Position position);
 
-    @Delete("delete from tb_position where id = #{id}")
-    public int deletePosition(String id);
-
     @Update("update tb_position set name = #{name},update_time=#{updateTime} where id = #{id}")
     public int putPosition(Position position);
 
-    @Delete("delete from tb_position where id in (#{ids})")
-    int deletePositionsByIds(String[] ids);
+    int deletePositionsByIds(List<Integer> ids);
 }

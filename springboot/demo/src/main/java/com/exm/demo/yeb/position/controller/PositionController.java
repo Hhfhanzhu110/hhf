@@ -34,17 +34,6 @@ public class PositionController {
         return AxiosResult.success(msg);
     }
 
-    @RequestMapping(value = {"/position/{id}"},method = {RequestMethod.DELETE})
-    @ResponseBody
-    public AxiosResult deletePosition(@PathVariable("id") String id){
-        try {
-            int n = positionService.deletePosition(id);
-            return AxiosResult.success();
-        } catch (Exception e){
-            return AxiosResult.error();
-        }
-    }
-
     @RequestMapping(value = {"/position/put"})
     @ResponseBody
     public AxiosResult putPosition(Position position){
@@ -58,7 +47,7 @@ public class PositionController {
 
     @RequestMapping(value = {"/position/delete/{ids}"})
     @ResponseBody
-    public AxiosResult deletePositions(@PathVariable("ids") String[] ids){
+    public AxiosResult deletePositions(@PathVariable("ids") List<Integer> ids){
         try {
             int n = positionService.deletePositionsByIds(ids);
             return AxiosResult.success();
