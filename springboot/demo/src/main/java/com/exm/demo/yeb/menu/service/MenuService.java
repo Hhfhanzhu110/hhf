@@ -4,6 +4,7 @@ import com.exm.demo.yeb.menu.domain.Menu;
 import com.exm.demo.yeb.user.domain.User;
 
 import java.util.List;
+import java.util.Set;
 
 public interface MenuService {
 
@@ -13,4 +14,6 @@ public interface MenuService {
      * @return
      */
     public List<Menu> searchMenusByUser(User user, Long parentId);
+
+    Set<String> selectPermsByUserId(Long userId);
 }

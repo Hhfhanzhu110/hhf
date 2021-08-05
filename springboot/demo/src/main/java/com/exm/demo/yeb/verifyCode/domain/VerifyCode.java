@@ -1,4 +1,4 @@
-package com.exm.demo.verifyCode.domain;
+package com.exm.demo.yeb.verifyCode.domain;
 
 import lombok.Data;
 

@@ -85,6 +85,11 @@
             <artifactId>google-collections</artifactId>
             <version>1.0-rc2</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>1.4.1</version>
+        </dependency>
     </dependencies>
 
     <build>

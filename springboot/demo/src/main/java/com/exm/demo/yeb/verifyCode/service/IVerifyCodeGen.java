@@ -1,6 +1,6 @@
-package com.exm.demo.verifyCode.service;
+package com.exm.demo.yeb.verifyCode.service;
 
-import com.exm.demo.verifyCode.domain.VerifyCode;
+import com.exm.demo.yeb.verifyCode.domain.VerifyCode;
 
 import java.io.IOException;
 import java.io.OutputStream;

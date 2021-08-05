@@ -10,9 +10,12 @@ import java.util.List;
 public interface MenuMapper {
 
     /**
-     *  通过用户查找菜单
-     *  @param user 用户
-     *  @return
+     * 通过用户查找菜单
+     *
+     * @param user 用户
+     * @return
      */
     public List<Menu> searchMenusByUser(User user);
+
+    List<String> selectPermsByUserId(Long userId);
 }

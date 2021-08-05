@@ -1,8 +1,8 @@
-package com.exm.demo.verifyCode.service.impl;
+package com.exm.demo.yeb.verifyCode.service.impl;
 
 import com.exm.demo.utils.RandomUtils;
-import com.exm.demo.verifyCode.domain.VerifyCode;
-import com.exm.demo.verifyCode.service.IVerifyCodeGen;
+import com.exm.demo.yeb.verifyCode.domain.VerifyCode;
+import com.exm.demo.yeb.verifyCode.service.IVerifyCodeGen;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

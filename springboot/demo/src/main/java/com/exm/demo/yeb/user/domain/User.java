@@ -93,4 +93,8 @@ public class User extends BaseEntity {
 
     //联系人
     private String linkMan;
+
+    public static boolean isRoot(User user){
+        return user!=null && user.getUserId()==1l;
+    }
 }

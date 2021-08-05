@@ -5,9 +5,20 @@
 <mapper namespace="com.exm.demo.yeb.menu.mapper.MenuMapper">
     <select id="searchMenusByUser" resultType="com.exm.demo.yeb.menu.domain.Menu">
         SELECT *
-        FROM system_menu menu left join system_role_menu rm on menu.menu_id = rm.menu_id
+        FROM system_menu menu
+                 left join system_role_menu rm on menu.menu_id = rm.menu_id
         WHERE rm.role_id in (
             select sur.role_id from system_user_role sur where sur.user_id = #{userId}
-            )
+        )
+    </select>
+
+    <select id="selectPermsByUserId">
+        select m.perms
+        from system_menu m
+        left join system_role_menu rm on rm.menu_id = m.menu_id
+        left join system_user_role ur on ur.role_id = rm.role_id
+        <where>
+            ur.user_id = #{userId}
+        </where>
     </select>
 </mapper>
