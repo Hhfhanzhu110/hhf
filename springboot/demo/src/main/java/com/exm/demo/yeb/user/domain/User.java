@@ -17,7 +17,7 @@ public class User extends BaseEntity {
     /**
      * 用户名
      */
-    private String username;
+    private String name;
 
     /**
      * 密码
@@ -52,7 +52,7 @@ public class User extends BaseEntity {
     /**
      * 登录名称
      */
-    private String loginName;
+    private String username;
 
     /**
      * 用户性别 0 男 1女
@@ -93,6 +93,11 @@ public class User extends BaseEntity {
 
     //联系人
     private String linkMan;
+
+    /**
+     * 盐加密
+     */
+    private String salt;
 
     public static boolean isRoot(User user){
         return user!=null && user.getUserId()==1l;

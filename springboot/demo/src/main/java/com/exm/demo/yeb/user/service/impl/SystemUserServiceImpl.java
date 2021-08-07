@@ -5,11 +5,14 @@ import com.exm.demo.common.domain.UserStatus;
 import com.exm.demo.common.exception.UserBlockedException;
 import com.exm.demo.common.exception.UserNotExistsException;
 import com.exm.demo.common.exception.UserPasswordNotMatchException;
+import com.exm.demo.utils.Md5SaltUtil;
 import com.exm.demo.yeb.user.domain.User;
 import com.exm.demo.yeb.user.mapper.SystemUserMapper;
 import com.exm.demo.yeb.user.service.SystemUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 @Service
 public class SystemUserServiceImpl implements SystemUserService {
@@ -45,5 +48,15 @@ public class SystemUserServiceImpl implements SystemUserService {
     @Override
     public User queryUserByUsername(String username) {
         return systemUserMapper.queryUserByUsername(username);
+    }
+
+    @Override
+    public int saveUser(User user) {
+        String password = Md5SaltUtil.encoderPassword(user.getPassword(), user.getUsername());
+        user.setRealPass(user.getPassword());
+        user.setPassword(password);
+        user.setSalt(user.getUsername());
+        user.setCreateTime(new Date());
+        return systemUserMapper.saveUser(user);
     }
 }

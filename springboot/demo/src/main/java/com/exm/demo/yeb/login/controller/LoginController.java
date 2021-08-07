@@ -1,13 +1,15 @@
 package com.exm.demo.yeb.login.controller;
 
 import com.exm.demo.entity.AxiosResult;
-import com.exm.demo.utils.UserContext;
 import com.exm.demo.yeb.login.service.LoginService;
 import com.exm.demo.yeb.user.domain.User;
 import com.exm.demo.yeb.user.service.SystemUserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,35 +35,46 @@ public class LoginController {
     public AxiosResult login(String username, String password, String code, HttpServletRequest request) throws JsonProcessingException {
         //校验验证码
         String verifyCode = request.getSession().getAttribute("VerifyCode").toString();
-        if (StringUtils.isBlank(verifyCode)){
+        if (StringUtils.isBlank(verifyCode)) {
             return AxiosResult.error("验证码错误过期");
-        } else if (!code.equals(verifyCode)){
+        } else if (!code.equals(verifyCode)) {
             return AxiosResult.error("验证码错误");
         }
-        //校验用户名和密码
+        //校验用户
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         try {
-            loginService.login(username,password);
-        } catch (Exception e){
+            //多个realm执行指定的realm
+            //MyToken token = new MyToken(username,password,loginType);
+            //记住我功能
+            //token.setRememberMe(rememberMe);
+            subject.login(token);
+        } catch (Exception e) {
             return AxiosResult.error("登录失败");
         }
-        User systemUser = systemUserService.login(username, password);
-        if(systemUser==null){
-            return AxiosResult.error("用户名或密码错误");
-        }else{
-            UserContext.putCurrebtUser(systemUser);
-            Map<String, Object> map = new HashMap<>();
-            map.put("tokenStr",systemUser.getUserId().toString());
-            ObjectMapper mapper = new ObjectMapper();
-            String user = mapper.writeValueAsString(systemUser);
-            map.put("systemUser",user);
-            return AxiosResult.success("登录成功",map);
-        }
+        Map<String, Object> map = new HashMap<>();
+        map.put("tokenStr", token);
+        ObjectMapper mapper = new ObjectMapper();
+        String user = mapper.writeValueAsString((User) subject);
+        map.put("systemUser", user);
+        return AxiosResult.success("登录成功", map);
     }
 
     @PostMapping("/logout")
     @ResponseBody
-    public AxiosResult logout(){
+    public AxiosResult logout() {
         return AxiosResult.success("注销成功");
+    }
+
+    @PostMapping("/register")
+    @ResponseBody
+    public AxiosResult register(User user) {
+        User userOld = systemUserService.queryUserByUsername(user.getUsername());
+        if (userOld == null) {
+            int n = systemUserService.saveUser(user);
+            return AxiosResult.success("注册成功");
+        }
+        return AxiosResult.error("该用户已存在");
     }
 
 }

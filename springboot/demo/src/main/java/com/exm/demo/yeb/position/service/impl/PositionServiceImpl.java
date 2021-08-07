@@ -37,7 +37,7 @@ public class PositionServiceImpl implements PositionService {
     @Override
     public int putPosition(Position position) {
         position.setUpdateTime(new Date());
-        position.setUpdateBy(UserContext.getCurreentUser().getLoginName());
+        position.setUpdateBy(UserContext.getCurreentUser().getUsername());
         return positionMapper.putPosition(position);
     }
 

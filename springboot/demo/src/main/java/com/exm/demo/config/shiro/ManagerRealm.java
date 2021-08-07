@@ -15,8 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashSet;
 import java.util.Set;
-
-public class UserRealm extends AuthorizingRealm {
+//帮助记忆多个reaml项目不使用
+public class ManagerRealm extends AuthorizingRealm {
 
     @Autowired
     MenuService menuService;
@@ -63,7 +63,7 @@ public class UserRealm extends AuthorizingRealm {
 
     @Override
     public String getName() {
-        return "userRealm";
+        return "ManagerRealm";
     }
 
     /**

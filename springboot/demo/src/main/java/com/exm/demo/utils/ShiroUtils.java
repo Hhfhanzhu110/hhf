@@ -54,8 +54,8 @@ public class ShiroUtils {
         return getSysUser().getUserId().longValue();
     }
 
-    public static String getLoginName() {
-        return getSysUser().getLoginName();
+    public static String getUserName() {
+        return getSysUser().getUsername();
     }
 
     public static String getIp() {

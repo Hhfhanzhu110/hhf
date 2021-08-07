@@ -26,8 +26,8 @@ public class JobLevelServiceImpl implements JobLevelService {
     public String addJobLevel(JobLevel jobLevel) {
         jobLevel.setUpdateTime(new Date());
         jobLevel.setCreateTime(new Date());
-        jobLevel.setUpdateBy(UserContext.getCurreentUser().getLoginName());
-        jobLevel.setCreateBy(UserContext.getCurreentUser().getLoginName());
+        jobLevel.setUpdateBy(UserContext.getCurreentUser().getUsername());
+        jobLevel.setCreateBy(UserContext.getCurreentUser().getUsername());
         int n = jobLevelMapper.addJobLevel(jobLevel);
         if (n == 1) {
             return "ok";
@@ -44,7 +44,7 @@ public class JobLevelServiceImpl implements JobLevelService {
     @Override
     public int putJobLevel(JobLevel jobLevel) {
         jobLevel.setUpdateTime(new Date());
-        jobLevel.setUpdateBy(UserContext.getCurreentUser().getLoginName());
+        jobLevel.setUpdateBy(UserContext.getCurreentUser().getUsername());
         return jobLevelMapper.putJobLevel(jobLevel);
     }
 

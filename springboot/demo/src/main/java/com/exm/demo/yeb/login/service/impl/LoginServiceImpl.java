@@ -13,6 +13,9 @@ public class LoginServiceImpl implements LoginService {
     public void login(String username, String password) throws Exception{
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username,password);
+        //MyToken token = new MyToken(username,password,loginType);
+        //token.setRememberMe(rememberMe);
         subject.login(token);
+        return;
     }
 }

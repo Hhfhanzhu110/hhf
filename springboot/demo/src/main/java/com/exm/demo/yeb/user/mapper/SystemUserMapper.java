@@ -21,4 +21,6 @@ public interface SystemUserMapper {
      * @return
      */
     User queryUserByUsername(String username);
+
+    int saveUser(User user);
 }
