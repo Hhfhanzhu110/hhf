@@ -39,6 +39,7 @@ public class ShiroConfig {
         filterMap.put("/captcha", "anon");
         filterMap.put("/departs", "anon");
         filterMap.put("/register", "anon");
+        filterMap.put("/home", "anon");
         filterMap.put("/**", "authc");//所有路径都拦截
 
         filterMap.put("/logout", "logout");//固定写法，修改用户信息未未登录状态
@@ -64,10 +65,9 @@ public class ShiroConfig {
      * @return securityManager
      */
     @Bean
-    public SecurityManager securityManager(UserRealm userRealm) {
+    public SecurityManager securityManager() {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         //securityManager.setAuthenticator(myModularRealmAuthenticator());多realm自定义认证器
-        securityManager.setRealm(userRealm);
         securityManager.setCacheManager(getEhCacheManager());
         securityManager.setSessionManager(getDefaultWebSessionManager());
         //

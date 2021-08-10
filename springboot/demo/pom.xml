@@ -107,6 +107,12 @@
             <artifactId>ehcache</artifactId>
         </dependency>
         <!--shiro缓存end-->
+        <!-- Shiro-redis插件 -->
+        <dependency>
+            <groupId>org.crazycake</groupId>
+            <artifactId>shiro-redis</artifactId>
+            <version>3.1.0</version>
+        </dependency>
     </dependencies>
 
     <build>

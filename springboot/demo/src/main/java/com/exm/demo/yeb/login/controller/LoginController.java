@@ -8,6 +8,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 public class LoginController {
@@ -49,15 +51,16 @@ public class LoginController {
             //记住我功能
             //token.setRememberMe(rememberMe);
             subject.login(token);
-        } catch (Exception e) {
-            return AxiosResult.error("登录失败");
+        } catch (AuthenticationException e) {
+            return AxiosResult.error("用户密码错误");
         }
-        Map<String, Object> map = new HashMap<>();
-        map.put("tokenStr", token);
+        Map<String,Object> map = new HashMap<>();
+        String tokenStr = UUID.randomUUID().toString();
         ObjectMapper mapper = new ObjectMapper();
-        String user = mapper.writeValueAsString((User) subject);
-        map.put("systemUser", user);
-        return AxiosResult.success("登录成功", map);
+        String user = mapper.writeValueAsString((User)subject.getPrincipal());
+        map.put("tokenStr",tokenStr);
+        map.put("systemUser",user);
+        return AxiosResult.success("登录成功",map);
     }
 
     @PostMapping("/logout")
