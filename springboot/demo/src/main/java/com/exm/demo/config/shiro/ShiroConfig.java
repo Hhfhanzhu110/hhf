@@ -43,8 +43,8 @@ public class ShiroConfig {
         filterMap.put("/**", "authc");//所有路径都拦截
 
         filterMap.put("/logout", "logout");//固定写法，修改用户信息未未登录状态
-        filter.setLoginUrl("/home");
-        filter.setUnauthorizedUrl("/login");
+        //filter.setLoginUrl("/home");
+        //filter.setUnauthorizedUrl("/login");
         filter.setFilterChainDefinitionMap(filterMap);
         return filter;
 
@@ -76,7 +76,7 @@ public class ShiroConfig {
         realms.add(managerRealm());
         securityManager.setRealms(realms);*/
         securityManager.setRealm(userRealm());
-        securityManager.setRememberMeManager(cookieRememberMeManager());
+        //securityManager.setRememberMeManager(cookieRememberMeManager());
         return securityManager;
     }
 
