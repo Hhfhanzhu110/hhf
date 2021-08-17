@@ -3,6 +3,7 @@ package com.exm.demo.config.shiro;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.session.SessionListener;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.CookieRememberMeManager;
@@ -13,6 +14,8 @@ import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreato
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -143,7 +146,10 @@ public class ShiroConfig {
     @Bean
     public DefaultWebSessionManager getDefaultWebSessionManager(){
         DefaultWebSessionManager defaultWebSessionManager = new DefaultWebSessionManager();
+        Collection<SessionListener> listeners = new ArrayList<>();
+        listeners.add(new ShiroSessionListener());
         defaultWebSessionManager.setGlobalSessionTimeout(10*60*1000);//5分钟
+        defaultWebSessionManager.setSessionListeners(listeners);
         return defaultWebSessionManager;
     }
     /*==========================权限session管理配置end============================*/
