@@ -39,7 +39,7 @@ public class LoginController {
         String verifyCode = request.getSession().getAttribute("VerifyCode").toString();
         if (StringUtils.isBlank(verifyCode)) {
             return AxiosResult.error("验证码错误过期");
-        } else if (!code.equals(verifyCode)) {
+        } else if (!code.equalsIgnoreCase(verifyCode)) {
             return AxiosResult.error("验证码错误");
         }
         //校验用户
