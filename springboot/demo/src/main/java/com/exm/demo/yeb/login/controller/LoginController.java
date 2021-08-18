@@ -12,6 +12,7 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -63,10 +64,8 @@ public class LoginController {
         return AxiosResult.success("登录成功",map);
     }
 
-    @PostMapping("/logout")
-    @ResponseBody
-    public AxiosResult logout() {
-        return AxiosResult.success("注销成功");
+    @GetMapping("/")
+    public void logout() {
     }
 
     @PostMapping("/register")
