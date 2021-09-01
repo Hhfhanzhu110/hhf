@@ -1,0 +1,44 @@
+server:
+  port: 8082
+spring:
+#  数据源配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/yeb?characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: root123456
+#redis配置信息
+  redis:
+    #redis服务器端口
+    port: 6379
+    #redis服务器地址
+    host: 127.0.0.1
+    #redis密码，默认为空
+#    password: 123456
+    #redis数据库索引（默认为0）
+    database: 0
+    jedis:
+      pool:
+        #连接池最大阻塞等待时间（负表示没有限制）
+        max-wait: 10000
+        #连接池最大连接数(负表示没有限制)
+        max-active: 100
+        #连接池中的最大空闲链接
+        max-idle: 20
+        #连接池中的最小空闲链接
+        min-idle: 0
+    #链接超时时间
+    timeout: 3000
+#mybatis 配置文件
+mybatis:
+  config-location: classpath:mybatis/config/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+#jwt-token配置
+token:
+  #  令牌自定义标识
+  header: Authorization
+  #  令牌秘钥
+  #	secret:  abcdefghijklmnopqrstuvwxyz  任意字符
+  secret: thisisaspringbootprojectyebsecretofhanhf.thisisaspringbootprojectyebsecretofhanhf.thisisaspringbootprojectyebsecretofhanhf
+  #   令牌有效期（默认30分钟）
+  expireTime: 3600000

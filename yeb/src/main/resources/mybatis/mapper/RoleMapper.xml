@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hxy.yeb.mapper.RoleMapper">
+    <select id="selectRoleKeys" resultType="com.hxy.yeb.domain.Role">
+        select r.role_id,r.role_name,r.role_key from system_role r
+            left join system_user_role ur on ur.role_id = r.role_id
+            left join system_user u on u.user_id = ur.user_id
+        <where>
+            u.user_id = #{userId}
+        </where>
+
+    </select>
+</mapper>
